@@ -3,9 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F66C886A-E2F5-4133-A599-0BF23D0DF2DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FA9AFAE1-BCE1-4940-A6D5-4DB669686215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.PaymentGateway", "src\Stark.PaymentGateway\Stark.PaymentGateway.csproj", "{C10052B9-7B35-455F-8CDC-B0266F38AB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.PaymentGateway.ComponentTests", "test\Stark.PaymentGateway.ComponentTests\Stark.PaymentGateway.ComponentTests.csproj", "{0CFDC402-3144-4D1A-B049-4DD9395C8859}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C10052B9-7B35-455F-8CDC-B0266F38AB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10052B9-7B35-455F-8CDC-B0266F38AB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10052B9-7B35-455F-8CDC-B0266F38AB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10052B9-7B35-455F-8CDC-B0266F38AB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CFDC402-3144-4D1A-B049-4DD9395C8859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFDC402-3144-4D1A-B049-4DD9395C8859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFDC402-3144-4D1A-B049-4DD9395C8859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFDC402-3144-4D1A-B049-4DD9395C8859}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C10052B9-7B35-455F-8CDC-B0266F38AB56} = {F66C886A-E2F5-4133-A599-0BF23D0DF2DC}
+		{0CFDC402-3144-4D1A-B049-4DD9395C8859} = {FA9AFAE1-BCE1-4940-A6D5-4DB669686215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22FB52A3-08F3-43A3-BE51-DDD15AA1BD23}
