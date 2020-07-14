@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\lib\Stark.ES\Stark.ES.csproj" />
+    <ProjectReference Include="..\..\lib\Stark.EventStore\Stark.EventStore.csproj" />
+    <ProjectReference Include="..\Stark.PaymentGateway.Domain\Stark.PaymentGateway.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
