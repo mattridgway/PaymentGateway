@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Commands;
+using Stark.PaymentGateway.Domain.Payments;
 using System.Threading.Tasks;
 
 namespace Stark.PaymentGateway.Controllers
@@ -19,15 +20,22 @@ namespace Stark.PaymentGateway.Controllers
 
         public async Task<ActionResult> ProcessPayment(PaymentRequest request)
         {
-            var result = await _mediator.Send(
-                CreateCommand(request, "merchant")); //TODO: Get the merchantid as a claim from the token when authentication is added
-
-            return result switch
+            try
             {
-                "PaymentRejected" => BadRequest(),
-                "BadPaymentRequest" => BadRequest(),
-                _ => Ok(),
-            };
+                //TODO: Get the merchantid as a claim from the token when authentication is added
+                var result = await _mediator.Send(CreateCommand(request, "merchant")); 
+
+                return result switch
+                {
+                    "PaymentRejected" => BadRequest(),
+                    "BadPaymentRequest" => BadRequest(),
+                    _ => Ok(),
+                };
+            }
+            catch (PaymentAggregateException)
+            {
+                return BadRequest();
+            }            
         }
 
         private static PaymentRequestCommand CreateCommand(PaymentRequest request, string merchantId)

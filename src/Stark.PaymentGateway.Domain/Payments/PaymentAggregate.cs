@@ -50,12 +50,19 @@ namespace Stark.PaymentGateway.Domain.Payments
         {
             if (aggregateEvent == null)
                 throw new ArgumentNullException(nameof(aggregateEvent));
+            try
+            {
+                _id = aggregateEvent.SourceId;
+                MerchantId = aggregateEvent.MerchantId;
+                Status = PaymentStatus.PaymentRaised;
+                Card = new CardDetails(aggregateEvent.CardNumber, aggregateEvent.ExpMonth, aggregateEvent.ExpYear);
+                Amount = new Amount(aggregateEvent.Amount, aggregateEvent.Currency);
+            }
+            catch (Exception ex) when (ex.GetType() == typeof(ArgumentException) || ex.GetType() == typeof(ArgumentNullException))
+            {
+                throw new PaymentAggregateException("Error creating aggregate", ex);
+            }
 
-            _id = aggregateEvent.SourceId;
-            MerchantId = aggregateEvent.MerchantId;
-            Status = PaymentStatus.PaymentRaised;
-            Card = new CardDetails(aggregateEvent.CardNumber, aggregateEvent.ExpMonth, aggregateEvent.ExpYear);
-            Amount = new Amount(aggregateEvent.Amount, aggregateEvent.Currency);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "This parameter is ignored as it is not currently used.")]
