@@ -26,23 +26,34 @@ namespace Stark.PaymentGateway.ComponentTests.ProcessPayment
                             "THEN return 200")]
         public async Task ValidPayment()
         {
-            var paymentrequest = CreatePaymentRequest();
+            var paymentrequest = CreatePaymentRequest(Guid.NewGuid());
             var response = await _client.PostAsync(_processPaymentUri, paymentrequest);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
-        private static HttpContent CreatePaymentRequest()
+        [Fact(DisplayName = "GIVEN an empty payment request " +
+                            "WHEN calling the payment api " +
+                            "THEN return 400")]
+        public async Task EmptyPayment()
+        {
+            var paymentrequest = CreatePaymentRequest(null, null, null, null, null, null, null);
+            var response = await _client.PostAsync(_processPaymentUri, paymentrequest);
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        private static HttpContent CreatePaymentRequest(Guid? id, string cardnumber = "4242424242424242", int? expMonth = 12, int? expYear = 99, string cvv = "123", decimal? amount = 9.99M, string currency = "GBP")
         {
             var payment = new PaymentRequest 
             { 
-                Id = Guid.NewGuid(), 
-                CardNumber = "4242424242424242",
-                ExpMonth = 12,
-                ExpYear = 99,
-                CVV = "123",
-                Amount = 9.99M,
-                Currency = "GBP"
+                Id = id, 
+                CardNumber = cardnumber,
+                ExpMonth = expMonth,
+                ExpYear = expYear,
+                CVV = cvv,
+                Amount = amount,
+                Currency = currency
             };
 
             return new StringContent(
