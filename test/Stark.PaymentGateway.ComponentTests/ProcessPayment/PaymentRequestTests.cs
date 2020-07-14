@@ -18,7 +18,7 @@ namespace Stark.PaymentGateway.ComponentTests.ProcessPayment
         public PaymentRequestTests(WebApplicationFactory<Startup> factory)
         {
             _client = factory.CreateClient();
-            _processPaymentUri = "api/v1/payment";
+            _processPaymentUri = "api/v1.0/payment";
         }
 
         [Fact(DisplayName = "GIVEN a valid payment request " +
@@ -40,8 +40,8 @@ namespace Stark.PaymentGateway.ComponentTests.ProcessPayment
                 CardNumber = "4242424242424242",
                 ExpMonth = 12,
                 ExpYear = 99,
-                CVV = 123,
-                Amount = 9.99,
+                CVV = "123",
+                Amount = 9.99M,
                 Currency = "GBP"
             };
 
