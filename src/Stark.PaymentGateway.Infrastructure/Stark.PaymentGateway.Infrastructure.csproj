@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\lib\Stark.ES\Stark.ES.csproj" />
     <ProjectReference Include="..\..\lib\Stark.EventStore\Stark.EventStore.csproj" />
+    <ProjectReference Include="..\Stark.PaymentGateway.Application\Stark.PaymentGateway.Application.csproj" />
     <ProjectReference Include="..\Stark.PaymentGateway.Domain\Stark.PaymentGateway.Domain.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Stark.EventStore;
+using Stark.PaymentGateway.Application.Payments.Queries;
 using Stark.PaymentGateway.Domain;
 using Stark.PaymentGateway.Domain.Payments;
 using Stark.PaymentGateway.Infrastructure.Repositories;
@@ -16,6 +17,7 @@ namespace Stark.PaymentGateway.Infrastructure
 
             services.AddSingleton<IBankService, FakeBankService>();
             services.AddTransient(typeof(IAggregateRepository<>), typeof(EventSourcedAggregateRepository<>));
+            services.AddTransient<IReadPaymentDetailProjections, PaymentDetailsProjectionRepository>();
 
             return services;
         }
