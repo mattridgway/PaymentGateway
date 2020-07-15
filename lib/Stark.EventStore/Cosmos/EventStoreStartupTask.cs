@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Stark.EventStore.Cosmos
 {
-    internal class CosmosStartupTask : IHostedService
+    internal class EventStoreStartupTask : IHostedService
     {
         private readonly IServiceProvider _provider;
 
-        public CosmosStartupTask(IServiceProvider provider)
+        public EventStoreStartupTask(IServiceProvider provider)
         {
             _provider = provider;
         }

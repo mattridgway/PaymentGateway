@@ -13,7 +13,7 @@ namespace Stark.EventStore
         {
             services.AddEncryptor(configuration);
 
-            services.AddHostedService<CosmosStartupTask>();
+            services.AddHostedService<EventStoreStartupTask>();
 
             services.TryAddSingleton((services) => {
                 return new CosmosClient(
