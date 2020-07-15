@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Queries;
+using Stark.PaymentGateway.Infrastructure.Repositories;
 using System;
 using System.Threading.Tasks;
 
@@ -22,12 +23,16 @@ namespace Stark.PaymentGateway.Controllers
         [HttpGet("{id}", Name = "Retrieve payment details")]
         public async Task<ActionResult<PaymentDetails>> RetrievePayment(Guid id)
         {
-            var payment = await _repository.GetPaymentByIdAsync(id, "merchant");
-
-            if (payment is null)
+            try
+            {
+                //TODO: Get the merchantid as a claim from the token when authentication is added
+                var payment = await _repository.GetPaymentByIdAsync(id, "merchant");
+                return Ok(payment);
+            }
+            catch (ProjectionNotFoundException)
+            {
                 return NotFound();
-
-            return Ok(payment);
+            }            
         }
     }
 }

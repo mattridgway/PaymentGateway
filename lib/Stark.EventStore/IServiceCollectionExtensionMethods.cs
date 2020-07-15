@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Stark.Encryption;
 using Stark.EventStore.Cosmos;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Stark.EventStore
 {
@@ -14,7 +15,7 @@ namespace Stark.EventStore
 
             services.AddHostedService<CosmosStartupTask>();
 
-            services.AddSingleton((services) => {
+            services.TryAddSingleton((services) => {
                 return new CosmosClient(
                     configuration.GetConnectionString("CosmosEventStore"),
                     new CosmosClientOptions { ApplicationName = applicationName });
