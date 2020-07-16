@@ -27,7 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stark.EventStore", "lib\Sta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stark.Encryption", "lib\Stark.Encryption\Stark.Encryption.csproj", "{FCB73DAA-BA23-4AFE-A563-FBAB5D407652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.Auth", "src\Stark.Auth\Stark.Auth.csproj", "{B452F61B-DABA-444E-AC84-575A8544D8A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stark.Auth", "src\Stark.Auth\Stark.Auth.csproj", "{B452F61B-DABA-444E-AC84-575A8544D8A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.PaymentGateway.Sdk.Net", "src\Stark.PaymentGateway.Sdk.Net\Stark.PaymentGateway.Sdk.Net.csproj", "{BB9AB905-412C-475D-828A-AFD5BD94B2AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{A8CB318D-96B5-436B-AA06-F591914CF0C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.PaymentGateway.SampleApplication", "sample\Stark.PaymentGateway.SampleApplication\Stark.PaymentGateway.SampleApplication.csproj", "{02B6EF73-7551-412D-B4BB-D88440FB22FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +81,14 @@ Global
 		{B452F61B-DABA-444E-AC84-575A8544D8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B452F61B-DABA-444E-AC84-575A8544D8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B452F61B-DABA-444E-AC84-575A8544D8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB9AB905-412C-475D-828A-AFD5BD94B2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB9AB905-412C-475D-828A-AFD5BD94B2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB9AB905-412C-475D-828A-AFD5BD94B2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB9AB905-412C-475D-828A-AFD5BD94B2AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B6EF73-7551-412D-B4BB-D88440FB22FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B6EF73-7551-412D-B4BB-D88440FB22FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B6EF73-7551-412D-B4BB-D88440FB22FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B6EF73-7551-412D-B4BB-D88440FB22FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +104,8 @@ Global
 		{942F8C01-3AAB-4569-86DC-1EBDE3048DFC} = {9F9D0244-BA1D-47E0-9E62-36F347EC6D8F}
 		{FCB73DAA-BA23-4AFE-A563-FBAB5D407652} = {9F9D0244-BA1D-47E0-9E62-36F347EC6D8F}
 		{B452F61B-DABA-444E-AC84-575A8544D8A4} = {F66C886A-E2F5-4133-A599-0BF23D0DF2DC}
+		{BB9AB905-412C-475D-828A-AFD5BD94B2AB} = {F66C886A-E2F5-4133-A599-0BF23D0DF2DC}
+		{02B6EF73-7551-412D-B4BB-D88440FB22FF} = {A8CB318D-96B5-436B-AA06-F591914CF0C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22FB52A3-08F3-43A3-BE51-DDD15AA1BD23}

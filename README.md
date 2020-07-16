@@ -6,8 +6,8 @@ This Payment Gateway is a core domain of the Stark Bank and contains the Payment
 
 - [x] Payment Request
 - [x] Payment Details
-- [ ] Authentication
-- [ ] Client Library and Sample
+- [x] Authentication
+- [x] Client Library and Sample
 - [ ] Healthcheck and monitoring
 
 # Getting Started
@@ -22,11 +22,13 @@ To run this project locally you will need:
 ## Project Layout
 
 * `/lib` - Contains class libraries which would be shared over many projects. Normally these would be made available via a NuGet feed.
+* `/sample` - Contains a sample .NET console application which shows how to use the .NET SDK to connect to the Payment Gateway. 
 * `/src`
   * `/src/Stark.PaymentGateway` - Contains the ASPNET Core host, providing HTTP API endpoints.
   * `/src/Stark.PaymentGateway.Application` - Contains the application layer for the Payment Gateway, such as the commands and command handlers.
   * `/src/Stark.PaymentGateway.Domain` - Contains the domain layer for the Payment Gateway, encapsulating any business logic and interfaces required to persist the domain model.
   * `/src/Stark.PaymentGateway.Infrastructure` - Contains the infrastructure layer for the Payment Gateway, including the implementation of any repositories.
+  * `/src/Start.PaymentGateway.Sdk.Net` - Contains a client library for other applications to easily connect to the Gateway API.
 * `/test` - Contains any automated tests projects
 
 # Troubleshooting
