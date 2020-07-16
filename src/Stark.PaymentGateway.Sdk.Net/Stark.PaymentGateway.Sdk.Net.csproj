@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Company>Stark</Company>
+    <Product>Stark Payment Gateway</Product>
+    <PackageId>Stark.PaymentGateway.Sdk.Net</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Matt Ridgway</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.3.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stark.PaymentGateway\Stark.PaymentGateway.csproj" />
+  </ItemGroup>
+
+</Project>
