@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Commands;
 using Stark.PaymentGateway.Domain.Payments;
+using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
@@ -9,6 +11,7 @@ namespace Stark.PaymentGateway.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize(Policy = "ProcessPayment")]
     [Route("api/v{version:apiVersion}/payment")]
     public class PaymentController : ControllerBase
     {
@@ -21,14 +24,15 @@ namespace Stark.PaymentGateway.Controllers
 
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [Consumes(MediaTypeNames.Application.Json)]
         [HttpPost(Name = "Process a payment")]
         public async Task<ActionResult> ProcessPayment(PaymentRequest request)
         {
             try
             {
-                //TODO: Get the merchantid as a claim from the token when authentication is added
-                var result = await _mediator.Send(CreateCommand(request, "merchant")); 
+                var merchant = HttpContext.User.Claims.FirstOrDefault(claim => claim.Type == "client_Merchant").Value;
+                var result = await _mediator.Send(CreateCommand(request, merchant)); 
 
                 return result switch
                 {

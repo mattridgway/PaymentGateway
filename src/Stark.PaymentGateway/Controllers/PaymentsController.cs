@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Queries;
 using Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Stark.PaymentGateway.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize(Policy = "RetrieveDetails")]
     [Route("api/v{version:apiVersion}/payments")]
     public class PaymentsController : ControllerBase
     {
@@ -19,14 +22,15 @@ namespace Stark.PaymentGateway.Controllers
         }
 
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpGet("{id}", Name = "Retrieve payment details")]
         public async Task<ActionResult<PaymentDetails>> RetrievePayment(Guid id)
         {
             try
             {
-                //TODO: Get the merchantid as a claim from the token when authentication is added
-                var payment = await _repository.GetPaymentByIdAsync(id, "merchant");
+                var merchant = HttpContext.User.Claims.FirstOrDefault(claim => claim.Type == "client_Merchant").Value;
+                var payment = await _repository.GetPaymentByIdAsync(id, merchant);
                 return Ok(payment);
             }
             catch (PaymentDetailNotFoundException)
