@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using IdentityServer4.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -12,13 +9,44 @@ namespace Stark.Auth
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // TODO: Store in a database and use real key for signing.
+            services.AddIdentityServer()
+                .AddInMemoryApiScopes(
+                    new List<ApiScope>
+                    {
+                        new ApiScope(name: "paymentgateway.process", displayName: "Process a new payment."),
+                        new ApiScope(name: "paymentgateway.retrieve", displayName: "Retreieve details for existing payment.")
+                    }
+                )
+                .AddInMemoryApiResources(
+                    new List<ApiResource>
+                    {
+                        new ApiResource(name: "paymentgateway", displayName: "Stark Payment Gateway API.")
+                        {
+                            Scopes = { "paymentgateway.process", "paymentgateway.retrieve" }
+                        }
+                    })
+                .AddInMemoryClients(
+                    new List<Client>
+                    {
+                        new Client
+                        {
+                            ClientId = "sampleapplication",
+                            ClientName = "Sample Application",
+                            Description = "Sample application used for local development and testing the payment gateway",
+                            AllowedGrantTypes = GrantTypes.ClientCredentials,
+                            ClientSecrets = { new Secret("secret".Sha256()) },
+                            AlwaysSendClientClaims = true,
+                            AllowedScopes = { "paymentgateway.process", "paymentgateway.retrieve" },
+                            Claims = { new ClientClaim("Merchant", "SampleApplication") },
+                            RequireConsent = false,
+                        }
+                    })
+                .AddDeveloperSigningCredential();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -26,15 +54,7 @@ namespace Stark.Auth
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app.UseIdentityServer();
         }
     }
 }
