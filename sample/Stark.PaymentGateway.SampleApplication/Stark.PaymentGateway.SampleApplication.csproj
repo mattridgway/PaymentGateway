@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Stark.PaymentGateway.Sdk.Net\Stark.PaymentGateway.Sdk.Net.csproj" />
+  </ItemGroup>
+
 </Project>
