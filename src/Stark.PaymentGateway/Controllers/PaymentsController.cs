@@ -21,6 +21,15 @@ namespace Stark.PaymentGateway.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Retrieve payment details.
+        /// </summary>
+        /// <remarks>
+        /// This will return the details of a previous payment request.
+        /// See <see cref="PaymentController.ProcessPayment(PaymentRequest)"/> to process a new payment.
+        /// </remarks>
+        /// <param name="id">Id of the payment.</param>
+        /// <returns>The payment details.</returns>     
         [ProducesResponseType(200)]
         [ProducesResponseType(401)]
         [ProducesResponseType(404)]

@@ -23,6 +23,7 @@ namespace Stark.PaymentGateway
             services.AddMediatR(typeof(ApplicationLayer));
 
             services.AddApiSecurity(_configuration);
+            services.AddApiDocumentation();
             services.AddControllers();
             services.AddApiVersioning(options =>
             {
@@ -42,6 +43,13 @@ namespace Stark.PaymentGateway
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(config =>
+            {
+                config.SwaggerEndpoint("/swagger/v1.0/swagger.json", "Stark Payment Gateway v1.0");
+                config.RoutePrefix = string.Empty;
+            });
 
             app.UseEndpoints(endpoints =>
             {

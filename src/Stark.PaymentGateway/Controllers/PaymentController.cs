@@ -22,6 +22,15 @@ namespace Stark.PaymentGateway.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Processes a new payment.
+        /// </summary>
+        /// <remarks>
+        /// This will make a payment request to a downstream bank.
+        /// The status code identifies whether the request was successful or not.
+        /// See <see cref="PaymentsController.RetrievePayment(Guid)"/> to retrieve details for a previous payment.
+        /// </remarks>
+        /// <param name="request">Model containing the payment information.</param>      
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
