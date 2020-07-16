@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stark.PaymentGateway.Application;
 using Stark.PaymentGateway.Infrastructure;
-using System;
 
 namespace Stark.PaymentGateway
 {
@@ -23,6 +22,7 @@ namespace Stark.PaymentGateway
         {
             services.AddMediatR(typeof(ApplicationLayer));
 
+            services.AddApiSecurity(_configuration);
             services.AddControllers();
             services.AddApiVersioning(options =>
             {
