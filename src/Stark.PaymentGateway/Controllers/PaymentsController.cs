@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Queries;
-using Stark.PaymentGateway.Infrastructure.Repositories;
+using Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail;
 using System;
 using System.Threading.Tasks;
 
@@ -11,9 +11,9 @@ namespace Stark.PaymentGateway.Controllers
     [Route("api/v{version:apiVersion}/payments")]
     public class PaymentsController : ControllerBase
     {
-        private readonly IReadPaymentDetailProjections _repository;
+        private readonly IPaymentDetailProjectionRepository _repository;
 
-        public PaymentsController(IReadPaymentDetailProjections repository)
+        public PaymentsController(IPaymentDetailProjectionRepository repository)
         {
             _repository = repository;
         }
@@ -29,7 +29,7 @@ namespace Stark.PaymentGateway.Controllers
                 var payment = await _repository.GetPaymentByIdAsync(id, "merchant");
                 return Ok(payment);
             }
-            catch (ProjectionNotFoundException)
+            catch (PaymentDetailNotFoundException)
             {
                 return NotFound();
             }            
