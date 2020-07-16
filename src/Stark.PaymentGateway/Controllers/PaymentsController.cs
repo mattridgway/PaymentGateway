@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Queries;
 using Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail;
 using System;
@@ -8,6 +9,7 @@ namespace Stark.PaymentGateway.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize(Policy = "RetrieveDetails")]
     [Route("api/v{version:apiVersion}/payments")]
     public class PaymentsController : ControllerBase
     {
@@ -19,6 +21,7 @@ namespace Stark.PaymentGateway.Controllers
         }
 
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpGet("{id}", Name = "Retrieve payment details")]
         public async Task<ActionResult<PaymentDetails>> RetrievePayment(Guid id)
