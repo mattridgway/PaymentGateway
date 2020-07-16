@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Commands;
 using Stark.PaymentGateway.Domain.Payments;
+using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
@@ -30,8 +31,8 @@ namespace Stark.PaymentGateway.Controllers
         {
             try
             {
-                //TODO: Get the merchantid as a claim from the token when authentication is added
-                var result = await _mediator.Send(CreateCommand(request, "merchant")); 
+                var merchant = HttpContext.User.Claims.FirstOrDefault(claim => claim.Type == "client_Merchant").Value;
+                var result = await _mediator.Send(CreateCommand(request, merchant)); 
 
                 return result switch
                 {
