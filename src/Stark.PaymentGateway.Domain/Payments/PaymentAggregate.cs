@@ -41,9 +41,9 @@ namespace Stark.PaymentGateway.Domain.Payments
                     Amount.Currency));
 
             if (result.IsSuccess)
-                RaiseEvent(new PaymentSucceededEvent(Id, result.BankName, result.StatusCode, result.ResponseReason, result.AuthCode));
+                RaiseEvent(new PaymentSucceededEvent(Id, MerchantId, result.BankName, result.StatusCode, result.ResponseReason, result.AuthCode));
             else
-                RaiseEvent(new PaymentRejectedEvent(Id, result.BankName, result.StatusCode, result.ResponseReason));
+                RaiseEvent(new PaymentRejectedEvent(Id, MerchantId, result.BankName, result.StatusCode, result.ResponseReason));
         }
 
         public void Apply(PaymentRaisedEvent aggregateEvent)
@@ -52,7 +52,7 @@ namespace Stark.PaymentGateway.Domain.Payments
                 throw new ArgumentNullException(nameof(aggregateEvent));
             try
             {
-                _id = aggregateEvent.SourceId;
+                _id = aggregateEvent.AggregateId;
                 MerchantId = aggregateEvent.MerchantId;
                 Status = PaymentStatus.PaymentRaised;
                 Card = new CardDetails(aggregateEvent.CardNumber, aggregateEvent.ExpMonth, aggregateEvent.ExpYear);

@@ -2,7 +2,7 @@
 
 namespace Stark.EventStore.Cosmos
 {
-    internal class CosmosEventStoreEntity
+    public class CosmosEventStoreEntity
     {
         [JsonProperty("partitionKey")]
         public string AggregateID { get; set; }

@@ -6,11 +6,11 @@ namespace Stark.ES
     {
         public long Version { get; set; } // TODO: Can I make this immutable and not have a public setter
 
-        public Guid SourceId { get; }
+        public Guid AggregateId { get; }
 
-        protected AggregateEvent(Guid sourceId)
+        protected AggregateEvent(Guid aggregateId)
         {
-            SourceId = sourceId;
+            AggregateId = aggregateId;
         }
     }
 }

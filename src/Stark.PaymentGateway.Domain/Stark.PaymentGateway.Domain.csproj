@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="8.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\lib\Stark.CQRS\Stark.CQRS.csproj" />
     <ProjectReference Include="..\..\lib\Stark.ES\Stark.ES.csproj" />
   </ItemGroup>

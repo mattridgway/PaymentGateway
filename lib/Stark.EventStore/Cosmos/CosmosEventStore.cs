@@ -30,7 +30,7 @@ namespace Stark.EventStore.Cosmos
                 var payload = await _encryptor.EncryptAsync(aggregateEvent);
                 batch.CreateItem(
                     new CosmosEventStoreEntity(
-                        aggregateEvent.SourceId.ToString(),
+                        aggregateEvent.AggregateId.ToString(),
                         aggregateEvent.Version.ToString("D10", CultureInfo.InvariantCulture),
                         aggregateEvent.GetType().FullName,
                         payload));

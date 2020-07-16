@@ -6,13 +6,13 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Stark.EventStore.Cosmos
+namespace Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail
 {
-    internal class CosmosStartupTask : IHostedService
+    internal class PaymentDetailProjectorStartupTask : IHostedService
     {
         private readonly IServiceProvider _provider;
 
-        public CosmosStartupTask(IServiceProvider provider)
+        public PaymentDetailProjectorStartupTask(IServiceProvider provider)
         {
             _provider = provider;
         }
@@ -22,10 +22,10 @@ namespace Stark.EventStore.Cosmos
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             using var scope = _provider.CreateScope();
-            var eventStoreConfig = scope.ServiceProvider.GetRequiredService<IOptions<CosmosEventStoreOptions>>();
+            var projectorOptions = scope.ServiceProvider.GetRequiredService<IOptions<PaymentDetailProjectionCosmosOptions>>();
             var client = scope.ServiceProvider.GetRequiredService<CosmosClient>();
-            var dbresult = await client.CreateDatabaseIfNotExistsAsync(eventStoreConfig.Value.DatabaseName);
-            await dbresult.Database.CreateContainerIfNotExistsAsync(eventStoreConfig.Value.ContainerName, eventStoreConfig.Value.PartitionKey);
-        }        
+            var dbresult = await client.CreateDatabaseIfNotExistsAsync(projectorOptions.Value.DatabaseName);
+            await dbresult.Database.CreateContainerIfNotExistsAsync(projectorOptions.Value.ContainerName, projectorOptions.Value.PartitionKey);
+        }
     }
 }

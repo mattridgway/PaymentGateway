@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Stark.PaymentGateway.Application.Payments.Commands;
 using Stark.PaymentGateway.Domain.Payments;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace Stark.PaymentGateway.Controllers
@@ -18,6 +19,10 @@ namespace Stark.PaymentGateway.Controllers
             _mediator = mediator;
         }
 
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [HttpPost(Name = "Process a payment")]
         public async Task<ActionResult> ProcessPayment(PaymentRequest request)
         {
             try
