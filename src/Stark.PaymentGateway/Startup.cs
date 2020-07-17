@@ -22,6 +22,7 @@ namespace Stark.PaymentGateway
         {
             services.AddMediatR(typeof(ApplicationLayer));
 
+            services.AddHealthChecks();
             services.AddApiSecurity(_configuration);
             services.AddApiDocumentation();
             services.AddControllers();
@@ -54,6 +55,7 @@ namespace Stark.PaymentGateway
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
     }
