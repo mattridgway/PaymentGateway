@@ -8,7 +8,7 @@ This Payment Gateway is a core domain of the Stark Bank and contains the Payment
 - [x] Payment Details
 - [x] Authentication
 - [x] Client Library and Sample
-- [ ] Healthcheck and monitoring
+- [x] Healthcheck and monitoring
 
 # Getting Started
 
