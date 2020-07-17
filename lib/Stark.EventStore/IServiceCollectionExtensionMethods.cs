@@ -15,6 +15,10 @@ namespace Stark.EventStore
 
             services.AddHostedService<EventStoreStartupTask>();
 
+            services.AddHealthChecks()
+                .AddTypeActivatedCheck<CosmosEventStoreHealthCheck>(
+                    "EventStore", 
+                    args: new object[] { configuration.GetConnectionString("CosmosEventStore") });
             services.TryAddSingleton((services) => {
                 return new CosmosClient(
                     configuration.GetConnectionString("CosmosEventStore"),
