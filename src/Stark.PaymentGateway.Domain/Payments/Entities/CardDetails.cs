@@ -21,7 +21,7 @@ namespace Stark.PaymentGateway.Domain.Payments.Entities
                 throw new ArgumentException($"Must have a value between 1 and 12 (inclusive).", nameof(expMonth));
 
             if (!expYear.HasValue || expYear.Value < 0 || expYear.Value > 99)
-                throw new ArgumentException($"Must have a value between 0 and 99 (inclusive).", nameof(ExpYear));
+                throw new ArgumentException($"Must have a value between 0 and 99 (inclusive).", nameof(expYear));
 
             //TODO: Validate expiry are numbers and in the future
 

@@ -28,7 +28,7 @@ namespace Stark.PaymentGateway.Controllers
         /// <remarks>
         /// This will make a payment request to a downstream bank.
         /// The status code identifies whether the request was successful or not.
-        /// See <see cref="PaymentsController.RetrievePayment(Guid)"/> to retrieve details for a previous payment.
+        /// See <see cref="PaymentsController.RetrievePayment(System.Guid)"/> to retrieve details for a previous payment.
         /// </remarks>
         /// <param name="request">Model containing the payment information.</param>      
         [ProducesResponseType(200)]
