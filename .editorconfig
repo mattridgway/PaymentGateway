@@ -1,0 +1,17 @@
+[*.cs]
+
+# CS1591: Missing XML comment for publicly visible type or member
+# This is considered as additional metadata and not mandatory
+dotnet_diagnostic.CS1591.severity = none
+
+# CA2007: Consider calling ConfigureAwait on the awaited task
+# As this is an aspnet core project and has no GUI thread, this can be safely ignored
+dotnet_diagnostic.CA2007.severity = none
+
+# CA1303: Do not pass literals as localized parameters
+# This project doesn't currently consider i18n
+dotnet_diagnostic.CA1303.severity = none
+
+# CA1812: Avoid uninstantiated internal classes
+# The compiler appears to be applying this too liberally
+dotnet_diagnostic.CA1812.severity = none
