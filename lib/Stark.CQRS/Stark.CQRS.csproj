@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
     <Company>Stark</Company>
     <Product>CQRS</Product>
     <PackageId>Stark.CQRS</PackageId>

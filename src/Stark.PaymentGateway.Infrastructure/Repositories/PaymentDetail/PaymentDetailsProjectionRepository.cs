@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Stark.PaymentGateway.Application.Payments.Queries;
 using System;
 using System.Net;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail
 {
-    internal partial class PaymentDetailProjectionRepository : IPaymentDetailProjectionRepository
+    internal class PaymentDetailProjectionRepository : IPaymentDetailProjectionRepository
     {
         private readonly Container _container;
 
@@ -63,6 +64,33 @@ namespace Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail
                 item: entity.Resource, 
                 id: paymentId.ToString(), 
                 partitionKey: new PartitionKey(merchantId));
+        }
+
+        private class PaymentDetailProjectionEntity
+        {
+            [JsonProperty("id")]
+            public string Id { get; set; }
+
+            [JsonProperty("merchant")]
+            public string Merchant { get; set; }
+
+            [JsonProperty("when")]
+            public DateTimeOffset When { get; set; }
+
+            [JsonProperty("maskedCardNumber")]
+            public string MaskedCardNumber { get; set; }
+
+            [JsonProperty("status")]
+            public string Status { get; set; }
+
+            [JsonProperty("isSuccess")]
+            public bool? IsSuccess { get; set; }
+
+            [JsonProperty("amount")]
+            public decimal? Amount { get; set; }
+
+            [JsonProperty("currency")]
+            public string Currency { get; set; }
         }
     }
 }

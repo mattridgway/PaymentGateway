@@ -17,6 +17,7 @@ namespace Stark.PaymentGateway.Sdk.Net
         private readonly string _clientId;
         private readonly string _clientSecret;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2208:Instantiate argument exceptions correctly", Justification = "Here the code should be specific about which configuration value is missing")]
         public PaymentGatewayProxy(HttpClient httpClient, IOptions<PaymentGatewayOptions> config)
         {
             _client = httpClient;

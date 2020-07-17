@@ -29,11 +29,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stark.Encryption", "lib\Sta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stark.Auth", "src\Stark.Auth\Stark.Auth.csproj", "{B452F61B-DABA-444E-AC84-575A8544D8A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.PaymentGateway.Sdk.Net", "src\Stark.PaymentGateway.Sdk.Net\Stark.PaymentGateway.Sdk.Net.csproj", "{BB9AB905-412C-475D-828A-AFD5BD94B2AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stark.PaymentGateway.Sdk.Net", "src\Stark.PaymentGateway.Sdk.Net\Stark.PaymentGateway.Sdk.Net.csproj", "{BB9AB905-412C-475D-828A-AFD5BD94B2AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{A8CB318D-96B5-436B-AA06-F591914CF0C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.PaymentGateway.SampleApplication", "sample\Stark.PaymentGateway.SampleApplication\Stark.PaymentGateway.SampleApplication.csproj", "{02B6EF73-7551-412D-B4BB-D88440FB22FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stark.PaymentGateway.SampleApplication", "sample\Stark.PaymentGateway.SampleApplication\Stark.PaymentGateway.SampleApplication.csproj", "{02B6EF73-7551-412D-B4BB-D88440FB22FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{48A71DFE-D01E-4110-8E9A-94EB5A2F29B9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
