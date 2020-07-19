@@ -36,7 +36,7 @@ namespace Stark.PaymentGateway.Sdk.Net
             _clientSecret = config.Value.ClientSecret;
         }
 
-        public async Task AuthenticateAsync()
+        public async Task<string> AuthenticateAsync()
         {           
             var disco = await _client.GetDiscoveryDocumentAsync(_authUri.OriginalString);
             using var request = new ClientCredentialsTokenRequest
@@ -49,6 +49,8 @@ namespace Stark.PaymentGateway.Sdk.Net
             var response = await _client.RequestClientCredentialsTokenAsync(request);
 
             _client.SetBearerToken(response.AccessToken);
+
+            return response.AccessToken;
         }
 
         public async Task<PaymentResponse> ProcessPaymentAsync(PaymentRequest request)
