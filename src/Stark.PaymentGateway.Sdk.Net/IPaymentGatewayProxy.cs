@@ -5,7 +5,7 @@ namespace Stark.PaymentGateway.Sdk.Net
 {
     public interface IPaymentGatewayProxy
     {
-        Task AuthenticateAsync();
+        Task<string> AuthenticateAsync();
         Task<PaymentResponse> ProcessPaymentAsync(PaymentRequest request);
         Task<PaymentDetails> RetrievePaymentDetailsAsync(Guid paymentId);
     }

@@ -20,7 +20,8 @@ namespace Stark.PaymentGateway.SampleApplication
             var proxy = serviceProvider.GetRequiredService<IPaymentGatewayProxy>();
 
             Console.WriteLine("Authenticating sample application");
-            await proxy.AuthenticateAsync();
+            var token = await proxy.AuthenticateAsync();
+            Console.WriteLine($"Token is {token}");
 
             Console.WriteLine("Making a new Payment Request");
             var request = new PaymentRequest
