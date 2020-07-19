@@ -12,6 +12,7 @@ namespace Stark.PaymentGateway
     {
         public static IServiceCollection AddApiDocumentation(this IServiceCollection services)
         {
+            // TODO: Improve swagger setup to better natively support API Versions
             services.AddSwaggerGen(config =>
             {
                 config.SwaggerDoc(
