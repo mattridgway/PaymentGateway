@@ -25,6 +25,12 @@ To run this project locally you will need:
   * `/src/Stark.PaymentGateway.Sdk.Net` - Contains a client library for other applications to easily connect to the Gateway API.
 * `/test` - Contains any automated tests projects
 
+## Automated Tests
+
+### Load Tests
+
+To run the automated K6 load tests, open a new terminal, navigate to the `/test/Stark.PaymentGateway.LoadTests` directory and run the command `k6 run process-payment-load-test.js`.
+
 # Troubleshooting
 
 ## System.Net.Http.HttpRequestException
