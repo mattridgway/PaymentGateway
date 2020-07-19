@@ -343,3 +343,4 @@ healthchecksdb
 /src/Stark.Auth/tempkey.jwk
 /src/Stark.PaymentGateway/paymentgateway-documentation.xml
 sample/Stark.PaymentGateway.SampleApplication.Go/*.exe
+.vscode/launch.json
