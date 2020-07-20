@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -8,12 +7,12 @@ using Xunit;
 
 namespace Stark.PaymentGateway.ComponentTests.RetrievePayment
 {
-    public class RetrievePaymentDetailsTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class RetrievePaymentDetailsTests : IClassFixture<AuthBypassWebApplicationFactory>
     {
         private readonly HttpClient _client;
         private readonly string _retrievePaymentUri;
 
-        public RetrievePaymentDetailsTests(WebApplicationFactory<Startup> factory)
+        public RetrievePaymentDetailsTests(AuthBypassWebApplicationFactory factory)
         {
             _client = factory.CreateClient();
             _retrievePaymentUri = "/api/v1.0/payments/";
@@ -39,6 +38,8 @@ namespace Stark.PaymentGateway.ComponentTests.RetrievePayment
         {
             var response = await _client.GetAsync(_retrievePaymentUri + Guid.NewGuid().ToString());
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+
+            
         }
     }
 }
