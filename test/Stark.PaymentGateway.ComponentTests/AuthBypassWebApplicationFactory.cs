@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System.IO;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -16,7 +15,6 @@ namespace Stark.PaymentGateway.ComponentTests
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            //builder.UseContentRoot(Path.Combine("..", "..", "..", "..", "..", "src", "Stark.PaymentGateway"));
             builder.ConfigureTestServices(services =>
             {
                 services.AddAuthentication(options =>

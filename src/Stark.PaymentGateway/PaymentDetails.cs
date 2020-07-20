@@ -7,7 +7,7 @@ namespace Stark.PaymentGateway
         public Guid Id { get; set; }
         public bool? IsSuccess { get; set; }
         public string MaskedCardNumber { get; set; }
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
         public string Currency { get; set; }
     }
 }
