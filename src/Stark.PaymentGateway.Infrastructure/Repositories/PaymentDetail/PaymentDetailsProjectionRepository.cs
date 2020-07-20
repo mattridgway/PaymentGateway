@@ -66,7 +66,7 @@ namespace Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail
                 partitionKey: new PartitionKey(merchantId));
         }
 
-        private class PaymentDetailProjectionEntity
+        internal class PaymentDetailProjectionEntity
         {
             [JsonProperty("id")]
             public string Id { get; set; }

@@ -9,7 +9,9 @@ using Stark.PaymentGateway.Infrastructure.ChangeFeed;
 using Stark.PaymentGateway.Infrastructure.Repositories;
 using Stark.PaymentGateway.Infrastructure.Repositories.PaymentDetail;
 using Stark.PaymentGateway.Infrastructure.Services.Banks;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Stark.PaymentGateway.ComponentTests")]
 namespace Stark.PaymentGateway.Infrastructure
 {
     public static class IServiceCollectionExtensionMethods

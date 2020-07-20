@@ -30,4 +30,10 @@
     <ProjectReference Include="..\Stark.PaymentGateway.Infrastructure\Stark.PaymentGateway.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="paymentgateway-documentation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

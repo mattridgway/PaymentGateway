@@ -10,12 +10,12 @@ using Xunit;
 
 namespace Stark.PaymentGateway.ComponentTests.ProcessPayment
 {
-    public class PaymentRequestTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class PaymentRequestTests : IClassFixture<AuthBypassWebApplicationFactory>
     {
         private readonly HttpClient _client;
         private readonly string _processPaymentUri;
 
-        public PaymentRequestTests(WebApplicationFactory<Startup> factory)
+        public PaymentRequestTests(AuthBypassWebApplicationFactory factory)
         {
             _client = factory.CreateClient();
             _processPaymentUri = "api/v1.0/payment";
