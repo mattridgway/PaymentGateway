@@ -47,6 +47,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stark.PaymentGateway.LoadTe
 		test\Stark.PaymentGateway.LoadTests\process-payment-load-test.js = test\Stark.PaymentGateway.LoadTests\process-payment-load-test.js
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stark.PaymentGateway.Domain.UnitTests", "test\Stark.PaymentGateway.Domain.UnitTests\Stark.PaymentGateway.Domain.UnitTests.csproj", "{78792A8E-8C47-4213-A5CA-E0D76B199664}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{02B6EF73-7551-412D-B4BB-D88440FB22FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02B6EF73-7551-412D-B4BB-D88440FB22FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02B6EF73-7551-412D-B4BB-D88440FB22FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78792A8E-8C47-4213-A5CA-E0D76B199664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78792A8E-8C47-4213-A5CA-E0D76B199664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78792A8E-8C47-4213-A5CA-E0D76B199664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78792A8E-8C47-4213-A5CA-E0D76B199664}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +125,7 @@ Global
 		{BB9AB905-412C-475D-828A-AFD5BD94B2AB} = {F66C886A-E2F5-4133-A599-0BF23D0DF2DC}
 		{02B6EF73-7551-412D-B4BB-D88440FB22FF} = {A8CB318D-96B5-436B-AA06-F591914CF0C5}
 		{ECA6E719-3F73-44A2-8C64-6799837D0595} = {FA9AFAE1-BCE1-4940-A6D5-4DB669686215}
+		{78792A8E-8C47-4213-A5CA-E0D76B199664} = {FA9AFAE1-BCE1-4940-A6D5-4DB669686215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22FB52A3-08F3-43A3-BE51-DDD15AA1BD23}
